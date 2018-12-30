@@ -257,8 +257,20 @@ All colors available in Bootstrap 4, are available as Sass variables and a Sass 
 <div class="row">
   {% for color in site.data.colors %}
     {% unless color.name == "white" or color.name == "gray" or color.name == "gray-dark" %}
-    <div class="col-md-4">
-        <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+    <div class="col-md-4 mb-3">
+      <div class="p-3 mb-2 swatch-{{ color.name }}">
+        <strong class="d-block">{{ color.name | capitalize }}</strong>
+        {{ color.hex }}
+      </div>
+      <div class="p-3 {{ color.name }}-100">{{ color.name }}-100</div>
+      <div class="p-3 {{ color.name }}-200">{{ color.name }}-200</div>
+      <div class="p-3 {{ color.name }}-300">{{ color.name }}-300</div>
+      <div class="p-3 {{ color.name }}-400">{{ color.name }}-400</div>
+      <div class="p-3 text-white {{ color.name }}-500">{{ color.name }}-500</div>
+      <div class="p-3 text-white {{ color.name }}-600">{{ color.name }}-600</div>
+      <div class="p-3 text-white {{ color.name }}-700">{{ color.name }}-700</div>
+      <div class="p-3 text-white {{ color.name }}-800">{{ color.name }}-800</div>
+      <div class="p-3 text-white {{ color.name }}-900">{{ color.name }}-900</div>
     </div>
     {% endunless %}
   {% endfor %}
