@@ -165,46 +165,108 @@ $text-align-utilities: (
 // Margin utilities
 
 $margin-utilities: (
+  responsive: true,
   property: margin,
   property-class: m,
   values: $spacers
 ) !default;
 
 $margin-x-utilities: (
+  responsive: true,
   property: margin-right margin-right,
   property-class: mx,
   values: $spacers
 ) !default;
 
 $margin-y-utilities: (
+  responsive: true,
   property: margin-top margin-bottom,
   property-class: my,
   values: $spacers
 ) !default;
 
 $margin-top-utilities: (
+  responsive: true,
   property: margin-top,
   property-class: mt,
   values: $spacers
 ) !default;
 
 $margin-right-utilities: (
+  responsive: true,
   property: margin-right,
   property-class: mr,
   values: $spacers
 ) !default;
 
 $margin-bottom-utilities: (
+  responsive: true,
   property: margin-bottom,
   property-class: mb,
   values: $spacers
 ) !default;
 
 $margin-left-utilities: (
+  responsive: true,
   property: margin-left,
   property-class: ml,
   values: $spacers
 ) !default;
+
+
+// Padding utilities
+
+$padding-utilities: (
+  responsive: true,
+  property: padding,
+  property-class: p,
+  values: $spacers
+) !default;
+
+$padding-x-utilities: (
+  responsive: true,
+  property: padding-right padding-right,
+  property-class: px,
+  values: $spacers
+) !default;
+
+$padding-y-utilities: (
+  responsive: true,
+  property: padding-top padding-bottom,
+  property-class: py,
+  values: $spacers
+) !default;
+
+$padding-top-utilities: (
+  responsive: true,
+  property: padding-top,
+  property-class: pt,
+  values: $spacers
+) !default;
+
+$padding-right-utilities: (
+  responsive: true,
+  property: padding-right,
+  property-class: pr,
+  values: $spacers
+) !default;
+
+$padding-bottom-utilities: (
+  responsive: true,
+  property: padding-bottom,
+  property-class: pb,
+  values: $spacers
+) !default;
+
+$padding-left-utilities: (
+  responsive: true,
+  property: padding-left,
+  property-class: pl,
+  values: $spacers
+) !default;
+
+
+// Text
 
 $font-weight-utilities: (
   property: font-weight,
@@ -216,6 +278,20 @@ $font-weight-utilities: (
     bolder: $font-weight-bolder
   )
 ) !default;
+
+$text-transform-utilities: (
+  property: text-transform,
+  property-class: text,
+  values: lowercase uppercase capitalize
+) !default;
+
+$text-utilities-utilities: (
+  responsive: true,
+  property: text-align,
+  property-class: text,
+  values: left right center
+) !default;
+
 
 $utilities: (
   $float-utilities,
@@ -235,7 +311,6 @@ $utilities: (
   $align-items-utilities,
   $align-content-utilities,
   $align-self-utilities,
-  $font-weight-utilities,
   $margin-utilities,
   $margin-x-utilities,
   $margin-y-utilities,
@@ -243,6 +318,15 @@ $utilities: (
   $margin-right-utilities,
   $margin-bottom-utilities,
   $margin-left-utilities,
+  $padding-utilities,
+  $padding-x-utilities,
+  $padding-y-utilities,
+  $padding-top-utilities,
+  $padding-right-utilities,
+  $padding-bottom-utilities,
+  $padding-left-utilities,
+  $font-weight-utilities,
+  $text-transform-utilities,
 ) !default;
 
 // Loop over every breakpoint
@@ -251,10 +335,10 @@ $utilities: (
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
     // Loop over each utility property
-    @each $utility in $utilities {
+    @each $key, $utility in $utilities {
 
       // Only render if responsive media queries are enabled or if it's the base media query
-      @if (map_get($utility, responsive) or $infix == "") {
+      @if ((map_get($utility, responsive) or $infix == "") and map_get($utility, enabled) != false) {
         $values: map_get($utility, values);
 
         @if type_of($values) == "string" {
