@@ -30,6 +30,16 @@
   }
 }
 
+@function negativify-map($map) {
+  $result: ();
+  @each $key, $value in $map {
+    @if $key != 0 {
+      $result: map-merge($result, ("n" + $key: (-$value)));
+    }
+  }
+  @return $result;
+}
+
 // Replace `$search` with `$replace` in `$string`
 // Used on our SVG icon backgrounds for custom forms.
 //
