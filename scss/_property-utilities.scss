@@ -1,0 +1,457 @@
+// stylelint-disable scss/dollar-variable-default
+//
+// Property utilities
+//
+// Congratulations, you have found your way to the property utilities variables file! It's recommended to first grab
+// a cup of coffee or tea before continuing reading because it can take some time before you figured out how it works.
+// Success!
+//
+// All the variables are suffixed with `-default` in this file and later merged if a custom configuration is used. In
+// your custom config you'll need to remove the `-default` suffix.
+// The utility variables accept the following options:
+// - property
+//   Obviously just the name of the property. This can be a string or an array of strings (needed for eg horizontal
+//   paddings or margins).
+// - responsive (optional)
+//   Boolean indicating if responsive classes need to be generated. `false` by default.
+// - property-class (optional)
+//   Variable to change the class name if you don't want it to be the same as the property.
+// - values
+//   This can be a list of values or a map if you don't want the class name to be the same as the value. If null is used
+//   as map key, it isn't rendered.
+// - print (optional)
+//   Boolean indicating if print classes need to be generated. `false` by default.
+//
+// All utility variables are added to the `$utilities` variable. If you want to add your custom utilities, you can add
+// them like this:
+// $opacity-utilities: (
+//   property: opacity,
+//   property-class: o,
+//   values: (
+//     0: 0,
+//     25: .25,
+//     50: .5,
+//     100: 1,
+//   )
+// );
+//
+// $utilities: (
+//   'opacity': $opacity-utilities
+// );
+//
+// The `$utilities` map is than merged with the map defined in this file so that all utilities are still rendered.
+//
+// Utilities can also be removed, for example if you want to remove the `float` utilities:
+// $float-utilities: false;
+//
+// And now it's up to you, go go go!
+
+$align-utilities-default: (
+  responsive: true,
+  property: vertical-align,
+  property-class: align,
+  values: baseline top middle bottom text-bottom text-top
+);
+
+$float-utilities-default: (
+  property: float,
+  values: left right none
+);
+
+$overflow-utilities-default: (
+  property: overflow,
+  values: auto hidden,
+);
+
+$display-utilities-default: (
+  responsive: true,
+  print: true,
+  property: display,
+  property-class: d,
+  values: none inline inline-block block table table-row table-cell flex inline-flex
+);
+
+$order-utilities-default: (
+  responsive: true,
+  property: order,
+  values: (
+    first: -1,
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
+    12: 12,
+    last: 13,
+  ),
+);
+
+$shadow-utilities-default: (
+  property: box-shadow,
+  property-class: shadow,
+  values: (
+    sm: $box-shadow-sm,
+    null: $box-shadow,
+    lg: $box-shadow-lg,
+    none: none,
+  )
+);
+
+$position-utilities-default: (
+  property: position,
+  values: static relative absolute fixed sticky
+);
+
+$border-color-utilities-default: (
+  property: border-color,
+  property-class: border,
+  values: map_merge($theme-colors, (white: $white))
+);
+
+$visibility-utilities-default: (
+  property: visibility,
+  values: visible hidden
+);
+
+
+// Sizing utilities
+
+$width-utilities-default: (
+  property: width,
+  property-class: w,
+  values: (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  )
+);
+
+$height-utilities-default: (
+  property: height,
+  property-class: h,
+  values: (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  )
+);
+
+
+// Flex utilities
+
+$flex-utilities-default: (
+  responsive: true,
+  property: flex,
+  values: (fill: 1 1 auto)
+);
+
+$flex-direction-utilities-default: (
+  responsive: true,
+  property: flex-direction,
+  property-class: flex,
+  values: row column row-reverse column-reverse
+);
+
+$flex-grow-utilities-default: (
+  responsive: true,
+  property: flex-grow,
+  values: 0 1
+);
+
+$flex-shrink-utilities-default: (
+  responsive: true,
+  property: flex-shrink,
+  values: 0 1
+);
+
+$flex-wrap-utilities-default: (
+  responsive: true,
+  property: flex-wrap,
+  property-class: flex,
+  values: wrap nowrap wrap-reverse
+);
+
+$justify-content-utilities-default: (
+  responsive: true,
+  property: justify-content,
+  values: flex-start flex-end center space-between space-around
+);
+
+$align-items-utilities-default: (
+  responsive: true,
+  property: align-items,
+  values: flex-start flex-end center baseline stretch
+);
+
+$align-content-utilities-default: (
+  responsive: true,
+  property: align-content,
+  values: flex-start flex-end center space-between space-around stretch
+);
+
+$align-self-utilities-default: (
+  responsive: true,
+  property: align-self,
+  values: auto flex-start flex-end center baseline stretch
+);
+
+
+// Margin utilities
+
+$margin-utilities-default: (
+  responsive: true,
+  property: margin,
+  property-class: m,
+  values: map_merge($spacers, (auto: auto))
+);
+
+$margin-x-utilities-default: (
+  responsive: true,
+  property: margin-right margin-right,
+  property-class: mx,
+  values: map_merge($spacers, (auto: auto))
+);
+
+$margin-y-utilities-default: (
+  responsive: true,
+  property: margin-top margin-bottom,
+  property-class: my,
+  values: map_merge($spacers, (auto: auto))
+);
+
+$margin-top-utilities-default: (
+  responsive: true,
+  property: margin-top,
+  property-class: mt,
+  values: map_merge($spacers, (auto: auto))
+);
+
+$margin-right-utilities-default: (
+  responsive: true,
+  property: margin-right,
+  property-class: mr,
+  values: map_merge($spacers, (auto: auto))
+);
+
+$margin-bottom-utilities-default: (
+  responsive: true,
+  property: margin-bottom,
+  property-class: mb,
+  values: map_merge($spacers, (auto: auto))
+);
+
+$margin-left-utilities-default: (
+  responsive: true,
+  property: margin-left,
+  property-class: ml,
+  values: map_merge($spacers, (auto: auto))
+);
+
+
+// Negative margin utilities
+
+$negative-margin-utilities-default: (
+  responsive: true,
+  property: margin,
+  property-class: m,
+  values: $negative-spacers
+);
+
+$negative-margin-x-utilities-default: (
+  responsive: true,
+  property: margin-right margin-right,
+  property-class: mx,
+  values: $negative-spacers
+);
+
+$negative-margin-y-utilities-default: (
+  responsive: true,
+  property: margin-top margin-bottom,
+  property-class: my,
+  values: $negative-spacers
+);
+
+$negative-margin-top-utilities-default: (
+  responsive: true,
+  property: margin-top,
+  property-class: mt,
+  values: $negative-spacers
+);
+
+$negative-margin-right-utilities-default: (
+  responsive: true,
+  property: margin-right,
+  property-class: mr,
+  values: $negative-spacers
+);
+
+$negative-margin-bottom-utilities-default: (
+  responsive: true,
+  property: margin-bottom,
+  property-class: mb,
+  values: $negative-spacers
+);
+
+$negative-margin-left-utilities-default: (
+  responsive: true,
+  property: margin-left,
+  property-class: ml,
+  values: $negative-spacers
+);
+
+
+// Padding utilities
+
+$padding-utilities-default: (
+  responsive: true,
+  property: padding,
+  property-class: p,
+  values: $spacers
+);
+
+$padding-x-utilities-default: (
+  responsive: true,
+  property: padding-right padding-right,
+  property-class: px,
+  values: $spacers
+);
+
+$padding-y-utilities-default: (
+  responsive: true,
+  property: padding-top padding-bottom,
+  property-class: py,
+  values: $spacers
+);
+
+$padding-top-utilities-default: (
+  responsive: true,
+  property: padding-top,
+  property-class: pt,
+  values: $spacers
+);
+
+$padding-right-utilities-default: (
+  responsive: true,
+  property: padding-right,
+  property-class: pr,
+  values: $spacers
+);
+
+$padding-bottom-utilities-default: (
+  responsive: true,
+  property: padding-bottom,
+  property-class: pb,
+  values: $spacers
+);
+
+$padding-left-utilities-default: (
+  responsive: true,
+  property: padding-left,
+  property-class: pl,
+  values: $spacers
+);
+
+
+// Text
+
+$font-weight-utilities-default: (
+  property: font-weight,
+  values: (
+    light: $font-weight-light,
+    lighter: $font-weight-lighter,
+    normal: $font-weight-normal,
+    bold: $font-weight-bold,
+    bolder: $font-weight-bolder
+  )
+);
+
+$text-transform-utilities-default: (
+  property: text-transform,
+  property-class: text,
+  values: lowercase uppercase capitalize
+);
+
+$text-align-utilities-default: (
+  responsive: true,
+  property: text-align,
+  property-class: text,
+  values: left right center justify
+);
+
+$color-utilities-default: (
+  property: color,
+  property-class: text,
+  values: (
+    white: $white,
+    body: $body-color,
+    muted: $text-muted,
+    black-50: rgba($black, .5),
+    white-50: rgba($white, .5),
+    reset: inherit,
+  )
+);
+
+
+// Merge the default configurations with optional custom configurations
+$utilities: () !default;
+$utilities: map_merge(
+  (
+    "float": map_merge($float-utilities-default, if(variable-exists(float-utilities), $float-utilities, ())),
+    "display": map_merge($display-utilities-default, if(variable-exists(display-utilities), $display-utilities, ())),
+    "border-color": map_merge($border-color-utilities-default, if(variable-exists(border-color-utilities), $border-color-utilities, ())),
+    "order": map_merge($order-utilities-default, if(variable-exists(order-utilities), $order-utilities, ())),
+    "position": map_merge($position-utilities-default, if(variable-exists(position-utilities), $position-utilities, ())),
+    "overflow": map_merge($overflow-utilities-default, if(variable-exists(overflow-utilities), $overflow-utilities, ())),
+    "shadow": map_merge($shadow-utilities-default, if(variable-exists(shadow-utilities), $shadow-utilities, ())),
+    "height": map_merge($height-utilities-default, if(variable-exists(height-utilities), $height-utilities, ())),
+    "width": map_merge($width-utilities-default, if(variable-exists(width-utilities), $width-utilities, ())),
+    "align": map_merge($align-utilities-default, if(variable-exists(align-utilities), $align-utilities, ())),
+    "visibility": map_merge($visibility-utilities-default, if(variable-exists(visibility-utilities), $visibility-utilities, ())),
+    "flex": map_merge($flex-utilities-default, if(variable-exists(flex-utilities), $flex-utilities, ())),
+    "flex-direction": map_merge($flex-direction-utilities-default, if(variable-exists(flex-direction-utilities), $flex-direction-utilities, ())),
+    "flex-grow": map_merge($flex-grow-utilities-default, if(variable-exists(flex-grow-utilities), $flex-grow-utilities, ())),
+    "flex-shrink": map_merge($flex-shrink-utilities-default, if(variable-exists(flex-shrink-utilities), $flex-shrink-utilities, ())),
+    "flex-wrap": map_merge($flex-wrap-utilities-default, if(variable-exists(flex-wrap-utilities), $flex-wrap-utilities, ())),
+    "justify-content": map_merge($justify-content-utilities-default, if(variable-exists(justify-content-utilities), $justify-content-utilities, ())),
+    "align-items": map_merge($align-items-utilities-default, if(variable-exists(align-items-utilities), $align-items-utilities, ())),
+    "align-content": map_merge($align-content-utilities-default, if(variable-exists(align-content-utilities), $align-content-utilities, ())),
+    "align-self": map_merge($align-self-utilities-default, if(variable-exists(align-self-utilities), $align-self-utilities, ())),
+    "margin": map_merge($margin-utilities-default, if(variable-exists(margin-utilities), $margin-utilities, ())),
+    "margin-x": map_merge($margin-x-utilities-default, if(variable-exists(margin-x-utilities), $margin-x-utilities, ())),
+    "margin-y": map_merge($margin-y-utilities-default, if(variable-exists(margin-y-utilities), $margin-y-utilities, ())),
+    "margin-top": map_merge($margin-top-utilities-default, if(variable-exists(margin-top-utilities), $margin-top-utilities, ())),
+    "margin-right": map_merge($margin-right-utilities-default, if(variable-exists(margin-right-utilities), $margin-right-utilities, ())),
+    "margin-bottom": map_merge($margin-bottom-utilities-default, if(variable-exists(margin-bottom-utilities), $margin-bottom-utilities, ())),
+    "margin-left": map_merge($margin-left-utilities-default, if(variable-exists(margin-left-utilities), $margin-left-utilities, ())),
+    "negative-margin": map_merge($negative-margin-utilities-default, if(variable-exists(negative-margin-utilities), $negative-margin-utilities, ())),
+    "negative-margin-x": map_merge($negative-margin-x-utilities-default, if(variable-exists(negative-margin-x-utilities), $negative-margin-x-utilities, ())),
+    "negative-margin-y": map_merge($negative-margin-y-utilities-default, if(variable-exists(negative-margin-y-utilities), $negative-margin-y-utilities, ())),
+    "negative-margin-top": map_merge($negative-margin-top-utilities-default, if(variable-exists(negative-margin-top-utilities), $negative-margin-top-utilities, ())),
+    "negative-margin-right": map_merge($negative-margin-right-utilities-default, if(variable-exists(negative-margin-right-utilities), $negative-margin-right-utilities, ())),
+    "negative-margin-bottom": map_merge($negative-margin-bottom-utilities-default, if(variable-exists(negative-margin-bottom-utilities), $negative-margin-bottom-utilities, ())),
+    "negative-margin-left": map_merge($negative-margin-left-utilities-default, if(variable-exists(negative-margin-left-utilities), $negative-margin-left-utilities, ())),
+    "padding": map_merge($padding-utilities-default, if(variable-exists(padding-utilities), $padding-utilities, ())),
+    "padding-x": map_merge($padding-x-utilities-default, if(variable-exists(padding-x-utilities), $padding-x-utilities, ())),
+    "padding-y": map_merge($padding-y-utilities-default, if(variable-exists(padding-y-utilities), $padding-y-utilities, ())),
+    "padding-top": map_merge($padding-top-utilities-default, if(variable-exists(padding-top-utilities), $padding-top-utilities, ())),
+    "padding-right": map_merge($padding-right-utilities-default, if(variable-exists(padding-right-utilities), $padding-right-utilities, ())),
+    "padding-bottom": map_merge($padding-bottom-utilities-default, if(variable-exists(padding-bottom-utilities), $padding-bottom-utilities, ())),
+    "padding-left": map_merge($padding-left-utilities-default, if(variable-exists(padding-left-utilities), $padding-left-utilities, ())),
+    "font-weight": map_merge($font-weight-utilities-default, if(variable-exists(font-weight-utilities), $font-weight-utilities, ())),
+    "text-transform": map_merge($text-transform-utilities-default, if(variable-exists(text-transform-utilities), $text-transform-utilities, ())),
+    "text-align": map_merge($text-align-utilities-default, if(variable-exists(text-align-utilities), $text-align-utilities, ())),
+    "color": map_merge($color-utilities-default, if(variable-exists(color-utilities), $color-utilities, ())),
+  ),
+  $utilities
+);

@@ -18,11 +18,48 @@ html {
 
 @import "functions";
 @import "variables";
+@import "property-utilities";
 
 @import "mixins/breakpoints";
 @import "mixins/grid-framework";
 @import "mixins/grid";
 
 @import "grid";
-// TODO: include flex and display utilities here
-@import "utilities/spacing";
+// Only load the utilities we need
+// stylelint-disable scss/dollar-variable-default
+$utilities: (
+  "display": $display-utilities-default,
+  "order": $order-utilities-default,
+  "flex": $flex-utilities-default,
+  "flex-direction": $flex-direction-utilities-default,
+  "flex-grow": $flex-grow-utilities-default,
+  "flex-shrink": $flex-shrink-utilities-default,
+  "flex-wrap": $flex-wrap-utilities-default,
+  "justify-content": $justify-content-utilities-default,
+  "align-items": $align-items-utilities-default,
+  "align-content": $align-content-utilities-default,
+  "align-self": $align-self-utilities-default,
+  "margin": $margin-utilities-default,
+  "margin-x": $margin-x-utilities-default,
+  "margin-y": $margin-y-utilities-default,
+  "margin-top": $margin-top-utilities-default,
+  "margin-right": $margin-right-utilities-default,
+  "margin-bottom": $margin-bottom-utilities-default,
+  "margin-left": $margin-left-utilities-default,
+  "negative-margin": $negative-margin-utilities-default,
+  "negative-margin-x": $negative-margin-x-utilities-default,
+  "negative-margin-y": $negative-margin-y-utilities-default,
+  "negative-margin-top": $negative-margin-top-utilities-default,
+  "negative-margin-right": $negative-margin-right-utilities-default,
+  "negative-margin-bottom": $negative-margin-bottom-utilities-default,
+  "negative-margin-left": $negative-margin-left-utilities-default,
+  "padding": $padding-utilities-default,
+  "padding-x": $padding-x-utilities-default,
+  "padding-y": $padding-y-utilities-default,
+  "padding-top": $padding-top-utilities-default,
+  "padding-right": $padding-right-utilities-default,
+  "padding-bottom": $padding-bottom-utilities-default,
+  "padding-left": $padding-left-utilities-default,
+);
+
+@import "utilities/property-utilities";
