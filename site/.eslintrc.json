@@ -1,14 +1,10 @@
 {
   "root": true,
-  "env": {
-    "es6": false,
-    "jquery": true
-  },
   "parserOptions": {
-    "ecmaVersion": 5,
     "sourceType": "script"
   },
   "extends": [
+    "plugin:unicorn/recommended",
     "xo",
     "xo/browser"
   ],
@@ -34,6 +30,7 @@
       "error",
       "never"
     ],
-    "strict": "error"
+    "strict": "error",
+    "unicorn/prefer-query-selector": "off"
   }
 }

@@ -24,6 +24,7 @@
     "sourceType": "script"
   },
   "extends": [
+    "plugin:unicorn/recommended",
     "xo",
     "xo/browser"
   ],
@@ -49,6 +50,8 @@
       "error",
       "never"
     ],
-    "strict": "error"
+    "strict": "error",
+    "unicorn/filename-case": "off",
+    "unicorn/no-unused-properties": "error"
   }
 }
