@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Alert = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Alert : window.Alert
+  var Alert = typeof window.bootstrap === 'undefined' ? window.Alert : window.bootstrap.Alert
 
   QUnit.module('alert plugin')
 
@@ -119,10 +119,10 @@ $(function () {
   QUnit.test('should return alert version', function (assert) {
     assert.expect(1)
 
-    if (typeof Alert !== 'undefined') {
-      assert.ok(typeof Alert.VERSION === 'string')
-    } else {
+    if (typeof Alert === 'undefined') {
       assert.notOk()
+    } else {
+      assert.ok(typeof Alert.VERSION === 'string')
     }
   })
 })

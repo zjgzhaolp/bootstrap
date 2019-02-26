@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Button = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Button : window.Button
+  var Button = typeof window.bootstrap === 'undefined' ? window.Button : window.bootstrap.Button
 
   QUnit.module('button plugin')
 
@@ -221,10 +221,10 @@ $(function () {
   QUnit.test('should return button version', function (assert) {
     assert.expect(1)
 
-    if (typeof Button !== 'undefined') {
-      assert.ok(typeof Button.VERSION === 'string')
-    } else {
+    if (typeof Button === 'undefined') {
       assert.notOk()
+    } else {
+      assert.ok(typeof Button.VERSION === 'string')
     }
   })
 })
