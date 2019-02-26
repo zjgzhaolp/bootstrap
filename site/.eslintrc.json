@@ -19,7 +19,7 @@
       }
     ],
     "multiline-ternary": [
-      "off",
+      "error",
       "always-multiline"
     ],
     "no-new": "off",

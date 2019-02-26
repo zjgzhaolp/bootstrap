@@ -39,7 +39,7 @@
       }
     ],
     "multiline-ternary": [
-      "off",
+      "error",
       "always-multiline"
     ],
     "new-cap": "off",
