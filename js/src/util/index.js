@@ -99,7 +99,8 @@ const typeCheckConfig = (componentName, config, configTypes) => {
       const expectedTypes = configTypes[property]
       const value = config[property]
       const valueType = value && isElement(value) ?
-        'element' : toType(value)
+        'element' :
+        toType(value)
 
       if (!new RegExp(expectedTypes).test(valueType)) {
         throw new Error(

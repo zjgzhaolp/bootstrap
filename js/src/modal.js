@@ -566,7 +566,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   }
 
   const config = Data.getData(target, DATA_KEY) ?
-    'toggle' : {
+    'toggle' :
+    {
       ...Manipulator.getDataAttributes(target),
       ...Manipulator.getDataAttributes(this)
     }

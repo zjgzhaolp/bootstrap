@@ -108,13 +108,16 @@ class ScrollSpy {
 
   refresh() {
     const autoMethod = this._scrollElement === this._scrollElement.window ?
-      OffsetMethod.OFFSET : OffsetMethod.POSITION
+      OffsetMethod.OFFSET :
+      OffsetMethod.POSITION
 
     const offsetMethod = this._config.method === 'auto' ?
-      autoMethod : this._config.method
+      autoMethod :
+      this._config.method
 
     const offsetBase = offsetMethod === OffsetMethod.POSITION ?
-      this._getScrollTop() : 0
+      this._getScrollTop() :
+      0
 
     this._offsets = []
     this._targets = []
@@ -191,7 +194,8 @@ class ScrollSpy {
 
   _getScrollTop() {
     return this._scrollElement === window ?
-      this._scrollElement.pageYOffset : this._scrollElement.scrollTop
+      this._scrollElement.pageYOffset :
+      this._scrollElement.scrollTop
   }
 
   _getScrollHeight() {
@@ -203,7 +207,8 @@ class ScrollSpy {
 
   _getOffsetHeight() {
     return this._scrollElement === window ?
-      window.innerHeight : this._scrollElement.getBoundingClientRect().height
+      window.innerHeight :
+      this._scrollElement.getBoundingClientRect().height
   }
 
   _process() {

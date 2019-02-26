@@ -58,17 +58,19 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
 function replaceRecursively(directory, excludedDirectories, allowedExtensions, original, replacement) {
   original = new RegExp(regExpQuote(original), 'g')
   replacement = regExpQuoteReplacement(replacement)
-  const updateFile = DRY_RUN ? filepath => {
-    if (allowedExtensions.has(path.parse(filepath).ext)) {
-      console.log(`FILE: ${filepath}`)
-    } else {
-      console.log(`EXCLUDED:${filepath}`)
+  const updateFile = DRY_RUN ?
+    filepath => {
+      if (allowedExtensions.has(path.parse(filepath).ext)) {
+        console.log(`FILE: ${filepath}`)
+      } else {
+        console.log(`EXCLUDED:${filepath}`)
+      }
+    } :
+    filepath => {
+      if (allowedExtensions.has(path.parse(filepath).ext)) {
+        sh.sed('-i', original, replacement, filepath)
+      }
     }
-  } : filepath => {
-    if (allowedExtensions.has(path.parse(filepath).ext)) {
-      sh.sed('-i', original, replacement, filepath)
-    }
-  }
 
   walkAsync(directory, excludedDirectories, updateFile, err => {
     console.error('ERROR while traversing directory!:')

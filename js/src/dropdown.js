@@ -469,7 +469,8 @@ class Dropdown {
     if (/input|textarea/i.test(event.target.tagName) ?
       event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
       (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
-        SelectorEngine.closest(event.target, Selector.MENU)) : !REGEXP_KEYDOWN.test(event.which)) {
+        SelectorEngine.closest(event.target, Selector.MENU)) :
+      !REGEXP_KEYDOWN.test(event.which)) {
       return
     }
 

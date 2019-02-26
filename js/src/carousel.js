@@ -390,7 +390,8 @@ class Carousel {
     const itemIndex = (activeIndex + delta) % this._items.length
 
     return itemIndex === -1 ?
-      this._items[this._items.length - 1] : this._items[itemIndex]
+      this._items[this._items.length - 1] :
+      this._items[itemIndex]
   }
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
